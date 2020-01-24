@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import CharCards from './CharacterCards';
 import axios from 'axios';
 import './StarWars.css';
+import styled from 'styled-components';
 
 function DataList() {
 // SETTING CHARACTER STATE
@@ -16,16 +17,24 @@ function DataList() {
           });
   }, []);
 
+// STYLES
+  let CardCont = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  `;
+
   return (
     <div>
       <h1>Starwars Character Info</h1>
-      <div className="card-cont">
+      <CardCont>
       {charData.map(char => {
         return(
           <CharCards card={char} key={char.name} />
         )
       })}
-      </div>
+      </CardCont>
     </div>
   );
 }
